@@ -1,17 +1,46 @@
 <%-- 
-    Document   : index
-    Created on : 13/10/2017, 17:32:18
+    Document   : home
+    Created on : 12/10/2017, 23:04:01
     Author     : vitoria
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.fatecpg.quiz.Usuario"%>
+<%@include file="WEB-INF/jspf/session.jspf"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Quiz- Home</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="WEB-INF/jspf/header.jspf"%>
+        <% try{
+            if(request.getParameter("Entrar") != null){
+                String user = request.getParameter("user");
+                String name;
+                for(int i=0; i<4; i++){
+                    name = Usuario.getList().get(i).getUsuario();
+                    if(name.equalsIgnoreCase(user)){
+                        
+                        sessao.setAttribute(login, user);
+                        %><%=sessao.getAttribute(login)%><%
+                        String url = "home.jsp";
+                        response.sendRedirect(url);
+                    }
+                }
+            }
+        }catch(Exception ex){
+        %><div>Usuário não cadastrado</div>
+        <%
+        }
+        %>
+        <form>
+            <label>Nome:</label>
+            <input type="text" name="user">
+            <input type="submit" name="Entrar" value="Enviar"> 
+        </form>
+
+    <%@include file="WEB-INF/jspf/footer.jspf"%>
     </body>
 </html>
