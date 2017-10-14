@@ -1,3 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<header><h1> Quiz Alguma Coisa</h1></header>
+<nav>
+    <ul>
+        <li><a href="logout.jsp">Sair</a></li>
+    </ul>
+</nav>

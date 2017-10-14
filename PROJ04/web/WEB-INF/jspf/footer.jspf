@@ -1,0 +1,3 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<footer>&copy; 2017 - Projeto 04 - POO. By Luciana Oliveira, Luiz Henrique, Rodrigo Topan e Vitória Nadejda</footer>
