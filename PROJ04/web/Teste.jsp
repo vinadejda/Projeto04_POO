@@ -20,6 +20,7 @@
 	<h1>webquiz</h1>
 	<h2>Quiz</h2>
 	<h2>Questoes</h2>
+        <% int totalPergunta=0;%>
     <!-- Aqui o usuario já está logado com a session-->
         <%
 		if(request.getParameter("finalizar")!=null){
@@ -37,12 +38,15 @@
                      //O sistema deve cadastrar a pontuação de cada usuario em cada jogo
                      
                     String nome =""+sessao.getAttribute(login); //Nome do usuario logado
-         
+                       
+                    
+                    //Calculo de media porcentagem
+                    double media = (pontos/ totalPergunta)/100;
                                
-                    Pontuacao p = new Pontuacao(nome, pontos,100.0,"Quiz do Rodrigo");//Criamos um objeto do tipo cliente
+                    Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz do Rodrigo");//Criamos um objeto do tipo cliente
 
                     
-                Pontuacao.getListPontuacao().add(p);//Aqui nós buscamos o arrayList na memória e enviamos o objeto e seus atributos para o armazenamento
+                    Pontuacao.getListPontuacao().add(p);//Aqui nós buscamos o arrayList na memória e enviamos o objeto e seus atributos para o armazenamento
    
             
                         
@@ -55,8 +59,11 @@
 	%>
 
 		<form>
-                   
 			<% for(Questao q: Quiz.montarQuiz()){%>
+                        
+                        <%totalPergunta++;%> 
+                        <!-- Contador de perguntas-->
+                        
                          <fieldset>
 			<H1><%=q.getPergunta()%></h1>  
                         <input type="radio" name="<%=q.getId()%>" value="<%=q.getRespostaCerta()%>"/>
