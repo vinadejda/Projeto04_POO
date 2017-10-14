@@ -19,9 +19,9 @@ public class Quiz {
     /*Instanciando arrayList de questões*/
     quiz = new ArrayList<>();
     /*Lista de questões do quiz*/
-    Questao q1 = new Questao("1","Qual o meu nome?","Rodrigo","Rafael","Isabela");
-    Questao q2 = new Questao("2","Qual o meu tipo de música favorita?","Jazz","Rock","Samba");
-    Questao q3 = new Questao("3","Eu toco violão?","Sim","Não","Mais ou menos");
+    Questao q1 = new Questao("Quiz do Rodrigo","1","Qual o meu nome?","Rodrigo","Rafael","Isabela");
+    Questao q2 = new Questao("Quiz do Rodrigo","2","Qual o meu tipo de música favorita?","Jazz","Rock","Samba");
+    Questao q3 = new Questao("Quiz do Rodrigo","3","Eu toco violão?","Sim","Não","Mais ou menos");
     
     /*adicionando perguntas ao arrayList de quiz*/       
     quiz.add(q1);

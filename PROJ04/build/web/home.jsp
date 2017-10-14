@@ -21,11 +21,10 @@
     <body>
         <%@include file="WEB-INF/jspf/header.jspf"%>
         <%@include file="WEB-INF/jspf/menu.jspf"%>
-        <%="Olá, " + sessao.getAttribute(login)%>
-        <h1>Hello World, Rodrigo!</h1>
-        Quantidade de tentativas: <%= Quiz.quantidade%>
-        Ultima pontuação: <%= Quiz.acertos%>
-        <a href="Teste.jsp">Fazer Teste do Rodrigo</a>
+        <%="Olá, " + sessao.getAttribute(login)%><BR>
+        Quantidade de tentativas: <%= Quiz.quantidade%><br>
+        Ultima pontuação: <%= Quiz.acertos%><br>
+        <a href="Teste.jsp">Fazer Teste do Rodrigo</a><br>
         <!-- Tabela de pontuações do usuário logado-->
         <table>
             <tr>

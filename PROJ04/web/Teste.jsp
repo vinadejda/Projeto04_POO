@@ -4,7 +4,10 @@
     Author     : Laércio
 --%>
 
+<%@page import="br.com.perguntado.Pontuacao"%>
 <%@page import="br.com.perguntado.Quiz"%>
+<%@page import="br.com.perguntado.Usuario"%>
+<%@include file="WEB-INF/jspf/session.jspf"%>
 <%@page import="br.com.perguntado.Questao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,15 +23,29 @@
     <!-- Aqui o usuario já está logado com a session-->
         <%
 		if(request.getParameter("finalizar")!=null){
-			
+			int pontos=0;
 			for(Questao q: Quiz.montarQuiz()){
 			String resposta = request.getParameter(q.getId());
 			if(resposta !=null){
 				if(resposta.equals(q.getRespostaCerta())){
                                    Quiz.acertos++;
+                                   pontos++;
 				}	
 			}
 		    }
+                     
+                     //O sistema deve cadastrar a pontuação de cada usuario em cada jogo
+                     
+                    String nome =""+sessao.getAttribute(login); //Nome do usuario logado
+         
+                               
+                    Pontuacao p = new Pontuacao(nome, pontos,100.0,"Quiz do Rodrigo");//Criamos um objeto do tipo cliente
+
+                    
+                Pontuacao.getListPontuacao().add(p);//Aqui nós buscamos o arrayList na memória e enviamos o objeto e seus atributos para o armazenamento
+   
+            
+                        
 		Quiz.quantidade++;
 		response.sendRedirect(request.getContextPath()+"/home.jsp");
 

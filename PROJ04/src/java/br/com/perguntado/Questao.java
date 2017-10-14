@@ -3,7 +3,9 @@ package br.com.perguntado;
  * @author Rodrigo
  */
 public class Questao {
-    
+    /*ATRIBUTO apontando o nome do quiz a qual a questão fará parte ao ser instanciada*/
+    private String nomeQuiz;
+    /*O id é só a identificação da questão*/
     private String id;
     private String pergunta;
     private String respostaCerta;
@@ -11,13 +13,15 @@ public class Questao {
     private String errada2;
     
     /*Toda questão possui um enunciado,uma alternativa certa e duas erradas*/
-    public Questao(String id,String pergunta,String respostaCerta, String errada1, String errada2){
+    public Questao(String nomeQuiz, String id,String pergunta,String respostaCerta, String errada1, String errada2){
+        this.nomeQuiz = nomeQuiz;
         this.id = id;
         this.pergunta = pergunta;
         this.respostaCerta = respostaCerta;
         this.errada1 = errada1;
         this.errada2 = errada2;
     }
+    
         public String getId() {
         return id;
     }
@@ -55,6 +59,14 @@ public class Questao {
 
     public void setErrada2(String errada2) {
         this.errada2 = errada2;
+    }
+
+    public String getNomeQuiz() {
+        return nomeQuiz;
+    }
+
+    public void setNomeQuiz(String nomeQuiz) {
+        this.nomeQuiz = nomeQuiz;
     }
     
     
