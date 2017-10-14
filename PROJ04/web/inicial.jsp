@@ -1,4 +1,3 @@
-<%@page import="br.com.perguntado.Ranking"%>
 <%@page import="br.com.perguntado.Pontuacao"%>
 <!DOCTYPE html>
 <!--
@@ -30,27 +29,9 @@ and open the template in the editor.
                 <th>Data</th>
             </tr>
             <tr>
-                <%try{Pontuacao r1 = new Pontuacao();%>
                 
-                <%for(){{%>
-                    <tr>
-                            <td><%=j++%></td>
-                            <td><%=r1.getNomeJogador()%></td>
-                            <td><%=r1.getPontuacaoJogador()%></td>
-                            <td><%=r1.getMediaJogador()%></td>
-                            <td><%=r1.getQtPerguntas()%></td>
-                            <td><%=r1.getNomeQuizJogado()%></td>
-                            <td><%=r1.getHoraQuizFormatado()%></td>
-                        </tr>
-                        <%}%>
-                   <%}%>
-           <%}catch(Exception ex){%>
-                <tr>
-                    <td colspan="5">
-                        Erro ao carregar a lista: <%=ex.getMessage()%>
-                    </td>
                 </tr>
-                <%}%>
+                
            
             
         </table>

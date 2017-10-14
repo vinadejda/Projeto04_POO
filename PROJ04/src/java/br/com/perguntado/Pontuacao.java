@@ -36,21 +36,6 @@ public class Pontuacao {
 
         this.horaQuiz = new Date();
     }
-    
-    public Pontuacao (){
-        
-    }
-    
-    
-    public Pontuacao (Pontuacao p) {
-        this.nomeJogador = p.nomeJogador;
-        this.pontuacaoJogador = p.pontuacaoJogador;
-        this.mediaJogador = p.mediaJogador;
-        this.qtPerguntas = p.qtPerguntas;
-        this.nomeQuizJogado = p.nomeQuizJogado;
-
-        this.horaQuiz = new Date();
-    }
 
     public String getNomeJogador() {
         return nomeJogador;
@@ -91,8 +76,8 @@ public class Pontuacao {
     public void setQtPerguntas(int qtPerguntas) {
         this.qtPerguntas = qtPerguntas;
     }
-    
-    public Date getHoraQuiz(){
+
+    public Date getHoraQuiz() {
         return horaQuiz;
     }
 
@@ -101,7 +86,6 @@ public class Pontuacao {
     }
 
     /*Fazendo arrayList de Pontuacoes dos Jogadores*/
-    
     public static ArrayList<Pontuacao> listPontuacao;
 
     public static ArrayList<Pontuacao> getListPontuacao() {
@@ -127,39 +111,45 @@ public class Pontuacao {
     
     public static ArrayList<Pontuacao> listaRanking;
     
-    public static ArrayList<Pontuacao> getListaRanking() {
-        if (listaRanking == null) {
-            listaRanking = new ArrayList<>();
-            
-            gerarRanking();
-        }
+    
+    
+    public static ArrayList<Pontuacao> gerarRanking(ArrayList<Pontuacao> list){
         
-        return listaRanking;
-    }
-
-    public static void gerarRanking() {
-        for(int i = 0; i<listPontuacao.size();i++)
+        Pontuacao temp;
+        
+        if (list.size()>1){
+            for (int x=0; x < list.size(); x++){
+                for (int i=0; i < list.size()-1;i++){
+                    if (list.get(i).compareTo(list.get(i+1)) > 0) {
+                        temp = list.get(i);
+                        list.set(i,list.get(i+1));
+                        list.set(i+1,temp);
+                    }
+                }
+            }
+        }
+        /*public static void bubblesrt(ArrayList<Drinks> list)
+  {
+        Drink temp;
+        if (list.size()>1) // check if the number of orders is larger than 1
         {
-            listaRanking.add(listPontuacao.get(i));
-        }
-        
-
-        for (int i = 0; listaRanking.size() >= i; i++) {
-            for (int j = 0; j < listaRanking.size() - 1; j++) {
-                if (listaRanking.get(j).getPontuacaoJogador() > listaRanking.get(j + 1).getPontuacaoJogador()) {
-                    Pontuacao aux;
-                    aux = new Pontuacao(listaRanking.get(j));
-                    
-                    
-                    listaRanking.set(j, listaRanking.get(i + 1));
-                    listaRanking.set(j + 1, aux);
+            for (int x=0; x<list.size(); x++) // bubble sort outer loop
+            {
+                for (int i=0; i < list.size()-i; i++) {
+                    if (list.get(i).compareTo(list.get(i+1)) > 0)
+                    {
+                        temp = list.get(i);
+                        list.set(i,list.get(i+1) );
+                        list.set(i+1, temp);
+                    }
                 }
             }
         }
 
-        /*public void ultimosJogados(){
+  }*/
         
-    }*/
+        return list;
     }
 
+    
 }
