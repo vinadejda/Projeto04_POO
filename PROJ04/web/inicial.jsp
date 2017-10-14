@@ -1,3 +1,4 @@
+<%@page import="br.com.perguntado.Ranking"%>
 <%@page import="br.com.perguntado.Pontuacao"%>
 <!DOCTYPE html>
 <!--
@@ -17,6 +18,42 @@ and open the template in the editor.
         <a href="cadastro.jsp">Cadastro</a>
         
         <!--Aqui vai a tabela de ranking e dos ultimos dez jogos-->
+        <!--Ranking-->
+        <table border ="1">
+            <tr>
+                <th>Posição</th>
+                <th>Jogador</th>
+                <th>Pontos</th>
+                <th>Media</th>
+                <th>Qt.Perguntas</th>
+                <th>Quiz</th>
+                <th>Data</th>
+            </tr>
+            <tr>
+                <%try{Pontuacao r1 = new Pontuacao();%>
+                
+                <%for(){{%>
+                    <tr>
+                            <td><%=j++%></td>
+                            <td><%=r1.getNomeJogador()%></td>
+                            <td><%=r1.getPontuacaoJogador()%></td>
+                            <td><%=r1.getMediaJogador()%></td>
+                            <td><%=r1.getQtPerguntas()%></td>
+                            <td><%=r1.getNomeQuizJogado()%></td>
+                            <td><%=r1.getHoraQuizFormatado()%></td>
+                        </tr>
+                        <%}%>
+                   <%}%>
+           <%}catch(Exception ex){%>
+                <tr>
+                    <td colspan="5">
+                        Erro ao carregar a lista: <%=ex.getMessage()%>
+                    </td>
+                </tr>
+                <%}%>
+           
+            
+        </table>
            <table border="1">
             <tr>
                 <th>Indice</th>
@@ -25,6 +62,7 @@ and open the template in the editor.
                 <th>Media</th>
                 <th>Qt.Perguntas</th>
                 <th>Quiz</th>
+                <th>Data</th>
 
            </tr>
             
@@ -40,6 +78,8 @@ and open the template in the editor.
                             <td><%= p.getMediaJogador()%></td>
                             <td><%= p.getQtPerguntas()%></td>
                             <td><%= p.getNomeQuizJogado()%></td>
+                            <td><%= p.getHoraQuizFormatado()%></td>
+                            
                         </tr>
                         <%}%>
                    <%}%>
