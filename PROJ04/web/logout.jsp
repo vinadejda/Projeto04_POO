@@ -6,6 +6,6 @@
 
 <%@include file="WEB-INF/jspf/session.jspf"%>
 <%sessao.invalidate();
-    String url = "index.html";
+    String url = "inicial.jsp";
     response.sendRedirect(url);
 %>

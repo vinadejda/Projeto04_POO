@@ -19,22 +19,29 @@ and open the template in the editor.
         <!--Aqui vai a tabela de ranking e dos ultimos dez jogos-->
            <table border="1">
             <tr>
+                <th>Indice</th>
                 <th>Jogador</th>
                 <th>Pontos</th>
                 <th>Media</th>
+                <th>Qt.Perguntas</th>
                 <th>Quiz</th>
 
            </tr>
             
+          <!--Lista dos 10 ultimos jogos-->
            <%try{%>
                 <%int i=0;%>
                     <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
+                        <% if(i<=10){%><!--If para criar tabelas com os 10 ultimos jogos apenas-->
                         <tr>
-                            <td><%=i%></td>
+                            <td><%=i++%></td>
                             <td><%=p.getNomeJogador()%></td>
                             <td><%= p.getPontuacaoJogador()%></td>
+                            <td><%= p.getMediaJogador()%></td>
+                            <td><%= p.getQtPerguntas()%></td>
                             <td><%= p.getNomeQuizJogado()%></td>
                         </tr>
+                        <%}%>
                    <%}%>
            <%}catch(Exception ex){%>
                 <tr>
@@ -45,6 +52,7 @@ and open the template in the editor.
            <%}%>    
         </table>
         
+        <!--Lista das 10 maiores pontuações-->
         
     </body>
 </html>

@@ -6,6 +6,7 @@
     ele teve em determinado quiz, sua ultima pontuacao e a pontuação que ele obteve nos ultimos 10 jogos 
 --%>
 
+<%@page import="br.com.perguntado.Pontuacao"%>
 <%@page import="br.com.perguntado.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="WEB-INF/jspf/session.jspf"%>
@@ -21,7 +22,29 @@
     <body>
         <%@include file="WEB-INF/jspf/header.jspf"%>
         <%@include file="WEB-INF/jspf/menu.jspf"%>
-        <%="Olá, " + sessao.getAttribute(login)%><BR>
+        <h1><%="Olá, " + sessao.getAttribute(login)%><BR></h1>
+        <% String nomeUsu = ""+sessao.getAttribute(login);%>
+        <h3> Histórico de partidas do <%= sessao.getAttribute(login)%></h3>
+        <table border="1">
+            <tr>
+                <td>Nome</td>
+                <td>Pontuação</td>
+                <td>Media</td>
+                <td>Qt.Perguntas</td>
+                <td>Quiz</td>
+            </tr>
+        <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
+                    <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuações o usuario que tenha o nome igual ao usuário logado-->
+                       <tr>
+                            <td><%=p.getNomeJogador()%></td>
+                            <td><%= p.getPontuacaoJogador()%></td>
+                            <td><%= p.getMediaJogador()%></td>
+                            <td><%= p.getQtPerguntas()%></td>
+                            <td><%= p.getNomeQuizJogado()%></td>
+                        </tr>
+                        <%}%>
+                   <%}%>
+        </table><br>
         Quantidade de tentativas: <%= Quiz.quantidade%><br>
         Ultima pontuação: <%= Quiz.acertos%><br>
         <a href="Teste.jsp">Fazer Teste do Rodrigo</a><br>
