@@ -6,48 +6,71 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Perguntados</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+    <%@include file="WEB-INF/jspf/head.jspf" %>
     <body>
-        <H1>PERGUNTADOS</H1>
-        <a href="acesso.jsp">Fazer Login</a>
-        <a href="cadastro.jsp">Cadastro</a>
-        
+        <div class="py-1 bg-dark">
+            <nav class="nav" style="margin-top: 2%;">
+                <%@include file="WEB-INF/jspf/header.jspf"%>                
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a href="acesso.jsp" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cadastro.jsp" class="nav-link">Cadastrar</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <main class="container">
+        <br>
+        <section>
         <!--Aqui vai a tabela de ranking e dos ultimos dez jogos-->
-        <!--Ranking-->
-        <table border ="1">
-            <tr>
-                <th>Posição</th>
-                <th>Jogador</th>
-                <th>Pontos</th>
-                <th>Media</th>
-                <th>Qt.Perguntas</th>
-                <th>Quiz</th>
-                <th>Data</th>
-            </tr>
-            <tr>
-                
+            <h2>Ranking</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Jogador</th>
+                    <th>Pontos</th>
+                    <th>Média</th>
+                    <th>Qt.Perguntas</th>
+                    <th>Quiz</th>
+                    <th>Data</th>
                 </tr>
-                
-           
-            
-        </table>
-           <table border="1">
+                <tr>
+                    <th>#</th>
+                    <th>Jogador</th>
+                    <th>Pontos</th>
+                    <th>Média</th>
+                    <th>Qt.Perguntas</th>
+                    <th>Quiz</th>
+                    <th>Data</th>
+                </tr> 
+                <tr>
+                    <th>#</th>
+                    <th>Jogador</th>
+                    <th>Pontos</th>
+                    <th>Média</th>
+                    <th>Qt.Perguntas</th>
+                    <th>Quiz</th>
+                    <th>Data</th>
+                </tr>
+            </table>
+        </section>
+        <br>
+        <section>
+           <table class="table table-striped">
             <tr>
-                <th>Indice</th>
+                <th>#</th>
                 <th>Jogador</th>
                 <th>Pontos</th>
-                <th>Media</th>
+                <th>Média</th>
                 <th>Qt.Perguntas</th>
                 <th>Quiz</th>
                 <th>Data</th>
 
            </tr>
             
-          <!--Lista dos 10 ultimos jogos-->
+          <h2>Lista dos 10 últimos jogos</h2>
            <%try{%>
                 <%int i=0;%>
                     <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
@@ -72,8 +95,9 @@ and open the template in the editor.
                 </tr>
            <%}%>    
         </table>
-        
+        </section>
         <!--Lista das 10 maiores pontuações-->
-        
+        </main>
+        <%@include file="WEB-INF/jspf/footer.jspf"%>
     </body>
 </html>

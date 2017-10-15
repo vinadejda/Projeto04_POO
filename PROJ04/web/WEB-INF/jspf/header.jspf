@@ -1,3 +1,3 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<header><h1> Quiz Alguma Coisa</h1></header>
+<header  style="padding-right: 45%; margin-left: 9%;"><h1 class="m-0 text-center text-white"> Quiz - Perguntados</h1><br></header>

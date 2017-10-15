@@ -20,7 +20,7 @@
 	<h1>webquiz</h1>
 	<h2>Quiz</h2>
 	<h2>Questoes</h2>
-        <% int totalPergunta=0;%>
+        <% int totalPergunta=3;%>
     <!-- Aqui o usuario já está logado com a session-->
         <%
 		if(request.getParameter("finalizar")!=null){
@@ -61,7 +61,7 @@
 		<form>
 			<% for(Questao q: Quiz.montarQuiz()){%>
                         
-                        <%totalPergunta++;%> 
+                        
                         <!-- Contador de perguntas-->
                         
                          <fieldset>

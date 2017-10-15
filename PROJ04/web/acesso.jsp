@@ -9,12 +9,22 @@
 <%@include file="WEB-INF/jspf/session.jspf"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Quiz- Home</title>
-    </head>
+    <%@include file="WEB-INF/jspf/head.jspf" %>
     <body>
-        <%@include file="WEB-INF/jspf/header.jspf"%>
+        <div class="py-1 bg-dark">
+            <nav class="nav" style="margin-top: 2%;">
+                <%@include file="WEB-INF/jspf/header.jspf"%>                
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a href="inicial.jsp" class="nav-link">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cadastro.jsp" class="nav-link">Cadastrar</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <main class="container">
         <% try{
             if(request.getParameter("Entrar") != null){
                 String user = request.getParameter("user");
@@ -31,16 +41,16 @@
                 }
             }
         }catch(Exception ex){
-        %><div>Usuário não cadastrado</div>
+        %><div class="alert alert-danger" role="alert">Usuário não cadastrado</div>
         <%
         }
         %>
-        <form>
-            <label>Nome:</label>
-            <input type="text" name="user">
-            <input type="submit" name="Entrar" value="Enviar"> 
+        <form class="form-group">
+            <label for="exampleInputEmail1">Nome:</label><br>
+            <input type="text" name="user" class="form-control" id="exampleInputEmail1" placeholder="Digite o seu nome"><br>
+            <input type="submit" name="Entrar" value="Enviar" class="btn btn-primary"> 
         </form>
-
+        </main>
     <%@include file="WEB-INF/jspf/footer.jspf"%>
     </body>
 </html>
