@@ -1,130 +1,76 @@
+<%-- 
+    Document   : home
+    Created on : 12/10/2017, 22:16:46
+    Author     : Laércio
+    Desc: O usuario já se encontra logado e esse é o painel onde são exibidas as quantidades de tentativas que
+    ele teve em determinado quiz, sua ultima pontuacao e a pontuação que ele obteve nos ultimos 10 jogos 
+--%>
+
 <%@page import="br.com.perguntado.Pontuacao"%>
-<%@page import="br.com.perguntado.Usuario"%>
+<%@page import="br.com.perguntado.Quiz"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="WEB-INF/jspf/session.jspf"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Quiz - Perguntados</title>        
-        <%@include file="WEB-INF/jspf/head.jspf" %>
+        <title>Painel do Usuário</title>
+        <%@include file="WEB-INF/jspf/head.jspf"%>
     </head>
-    <body>
+    <body> 
         <nav class="navbar navbar-dark bg-dark">
-            <%@include file="WEB-INF/jspf/header.jspf"%>                
+            <%@include file="WEB-INF/jspf/header.jspf"%>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a href="#login" class="nav-link" style="color: #fff;">Login</a>
+                    <a href="Teste.jsp" class="nav-link" style="color: #fff;">Realizar Teste</a><br>   
+                </li>
+                <li class="nav-item">
+                    <a href="logout.jsp" class="nav-link" style="color: #fff;">Sair</a>
                 </li>
             </ul>
         </nav>
-        <section class="login" id="login">
-            <% try{
-                if(request.getParameter("Entrar") != null){
-                    String user = request.getParameter("user");
-                    String name;
-                    for(int i=0; i<4; i++){
-                        name = Usuario.getListUsuarios().get(i).getNome();
-                        if(name.equalsIgnoreCase(user)){
-
-                            sessao.setAttribute(login, user);
-                            %><%=sessao.getAttribute(login)%><%
-                            String url = "inicial.jsp";
-                            response.sendRedirect(url);
-                        }
-                    }
-                }
-                }catch(Exception ex){
-                    %><div class="alert alert-danger" role="alert">Usu�rio n�o cadastrado</div>
-                <%}%>
-            <a href="#" id="btnfechar">X</a>
-            <form class="form-group" id="formulario">
-                <h2>Entrar:</h2><br>
-                <label for="email">Nome:</label><br>                 
-                <input id="email" type="text" class="form-control" name="user" placeholder="Digite o seu nome"><br>
-                <center><input type="submit" name="Entrar" value="Entrar" class="btn btn-dark"> </center>
-            </form>
-        </section>
         <main class="container">
-        <br>
-        <section>
-        <!--Aqui vai a tabela de ranking e dos ultimos dez jogos-->
-            <h2>Ranking</h2>
-            <table class="table table-striped">
-                <tr>
-                    <th>#</th>
-                    <th>Jogador</th>
-                    <th>Pontos</th>
-                    <th>M�dia</th>
-                    <th>Qt.Perguntas</th>
-                    <th>Quiz</th>
-                    <th>Data</th>
-                </tr>
-                <tr>
-                    <th>#</th>
-                    <th>Jogador</th>
-                    <th>Pontos</th>
-                    <th>M�dia</th>
-                    <th>Qt.Perguntas</th>
-                    <th>Quiz</th>
-                    <th>Data</th>
-                </tr> 
-                <tr>
-                    <th>#</th>
-                    <th>Jogador</th>
-                    <th>Pontos</th>
-                    <th>M�dia</th>
-                    <th>Qt.Perguntas</th>
-                    <th>Quiz</th>
-                    <th>Data</th>
-                </tr>
-            </table>
-        </section>
-        <br>
-        <section>
-           <table class="table table-striped">
-            <tr>
-                <th>#</th>
-                <th>Jogador</th>
-                <th>Pontos</th>
-                <th>M�dia</th>
-                <th>Qt.Perguntas</th>
-                <th>Quiz</th>
-                <th>Data</th>
-
-           </tr>
+            <br>
+            <h1><%="Olá, " + sessao.getAttribute(login)%><br></h1>
+            <% String nomeUsu = ""+sessao.getAttribute(login);%>
+            <br>
+            <h2> Seu Histórico de partidas:</h2>
+            <section  class="card-body">
+                Quantidade de tentativas: <%= Quiz.quantidade%><br>
+                Última pontuação: <%= Quiz.acertos%><br>                
+            </section>   
+                <!-- Tabela de pontuações do usuário logado-->
+                <table  class="table table-striped">
+                    <tr>
+                        <th>Nome do Quiz</th>
+                        <th>Pontuação</th><!--Se o luiz quizer, a hora pode ser um atributo a mais <td>Hora</td>-->
+                    </tr>
+                </table>
+                <br>
             
-          <h2>Lista dos 10 �ltimos jogos</h2>
-           <%try{%>
-                <%int i=0;%>
-                    <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
-                        <% if(i<=10){%><!--If para criar tabelas com os 10 ultimos jogos apenas-->
+                
+            <section>
+                <h2>Últimos testes realizados</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Pontuação</th>
+                        <th>Média</th>
+                        <th>Qt.Perguntas</th>
+                        <th>Quiz</th>
+                    </tr>
+                <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
+                    <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuações o usuario que tenha o nome igual ao usuário logado-->
                         <tr>
-                            <td><%=i++%></td>
-                            <td><%=p.getNomeJogador()%></td>
                             <td><%= p.getPontuacaoJogador()%></td>
                             <td><%= p.getMediaJogador()%></td>
                             <td><%= p.getQtPerguntas()%></td>
                             <td><%= p.getNomeQuizJogado()%></td>
-                            <td><%= p.getHoraQuizFormatado()%></td>
-                            
                         </tr>
-                        <%}%>
-                   <%}%>
-           <%}catch(Exception ex){%>
-                <tr>
-                    <td colspan="5">
-                        Erro ao carregar a lista: <%=ex.getMessage()%>
-                    </td>
-                </tr>
-           <%}%>    
-        </table>
-        </section>
-        <!--Lista das 10 maiores pontua��es-->
-        </main>
+                    <%}
+                }%>
+                </table><br>
+            </section>
+        </main>       
         <%@include file="WEB-INF/jspf/footer.jspf"%>
     </body>
 </html>
+
