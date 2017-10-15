@@ -103,22 +103,20 @@ and open the template in the editor.
             
           <h2>Lista dos 10 últimos jogos</h2>
            <%try{%>
-                <%int i=0;%>
-                    <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
-                        <% if(i<=10){%><!--If para criar tabelas com os 10 ultimos jogos apenas-->
+           <%int i = 1;%>
+           <% for (Pontuacao u: Pontuacao.getUltimosJogos()){%><!--foreach-->
+                        
                         <tr>
                             <td><%=i++%></td>
-                            <td><%=p.getNomeJogador()%></td>
-                            <td><%= p.getPontuacaoJogador()%></td>
-                            <td><%= p.getMediaJogador()%></td>
-                            <td><%= p.getQtPerguntas()%></td>
-                            <td><%= p.getNomeQuizJogado()%></td>
-                            <td><%= p.getHoraQuizFormatado()%></td>
-                            
+                            <td><%=u.getNomeJogador()%></td>
+                            <td><%=u.getPontuacaoJogador()%></td>
+                            <td><%=u.getMediaJogador()%></td>
+                            <td><%=u.getQtPerguntas()%></td>
+                            <td><%=u.getNomeQuizJogado()%></td>
+                            <td><%=u.getHoraQuizFormatado()%></td>
                         </tr>
-                        <%}%>
-                   <%}%>
-           <%}catch(Exception ex){%>
+                    <%}%>
+                   <%}catch(Exception ex){%>
                 <tr>
                     <td colspan="5">
                         Erro ao carregar a lista: <%=ex.getMessage()%>

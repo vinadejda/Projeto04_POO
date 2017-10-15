@@ -8,6 +8,7 @@ package br.com.perguntado;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -36,6 +37,10 @@ public class Pontuacao {
         this.nomeQuizJogado = nomeQuizJogado;
 
         this.horaQuiz = new Date();
+    }
+    
+    public Pontuacao(){
+    
     }
 
     public String getNomeJogador() {
@@ -130,8 +135,9 @@ public class Pontuacao {
      * @return ArrayList listaRanking de objetos do tipo Pontuacao
      */
     public static ArrayList<Pontuacao> getListaRanking() {
-        
-        listaRanking = new ArrayList<>();   //Instancia o listaRanking
+        if (listaRanking == null) {
+            listaRanking = new ArrayList<>();   //Instancia o listaRanking
+        }
         listaRanking = getListPontuacao(); /*Copia as referências dos objetos
         da atual lista de Pontuação "listPontuacao" para o listaRanking
         */
@@ -172,11 +178,26 @@ public class Pontuacao {
          return listaRanking;
         
     }
+    public static ArrayList<Pontuacao> ultimosJogos; // ArrayList exclusivo para ultimos jogos
     
+    public static ArrayList<Pontuacao> getUltimosJogos(){
+        if (ultimosJogos == null) {
+        ultimosJogos = new ArrayList<>();
+        }
+        ultimosJogos = getListPontuacao();
+        
+        Collections.reverse(ultimosJogos);
+        
+        while (ultimosJogos.size()>10) {
+            ultimosJogos.remove(ultimosJogos.size()-1);
+        }
+        /*for (int i = 0; i < ultimosJogos.size();i++){
+            JOptionPane.showMessageDialog(null, ultimosJogos.get(i).getPontuacaoJogador());
+        }*/
+        return ultimosJogos;
+    }
     /*public static void main(String[] args) {
-        getListaRanking();
+        getUltimosJogos();
     }*/
-
-    
-
 }
+
