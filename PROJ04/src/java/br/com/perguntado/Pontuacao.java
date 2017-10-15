@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,64 +94,89 @@ public class Pontuacao {
             listPontuacao = new ArrayList<>();
 
             Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p2 = new Pontuacao("Rodrigo", 9, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz do Rodrigo");
             Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p4 = new Pontuacao("Rodrigo", 7, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p5 = new Pontuacao("Rodrigo", 6, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p6 = new Pontuacao("Rodrigo", 5, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p4 = new Pontuacao("Luiz", 7, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p5 = new Pontuacao("Vitoria", 6, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p6 = new Pontuacao("Luciana", 11, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p7 = new Pontuacao("Luciana", 13, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p8 = new Pontuacao("Luciana", 10, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p9 = new Pontuacao("Luciana", 5, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p10 = new Pontuacao("Luciana", 4, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p11 = new Pontuacao("Luciana", 2, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p12 = new Pontuacao("Luciana", 1, 100.00, 20, "Quiz do Rodrigo");
             listPontuacao.add(p1);
             listPontuacao.add(p2);
             listPontuacao.add(p3);
             listPontuacao.add(p4);
             listPontuacao.add(p5);
             listPontuacao.add(p6);
+            listPontuacao.add(p7);
+            listPontuacao.add(p8);
+            listPontuacao.add(p9);
+            listPontuacao.add(p10);
+            listPontuacao.add(p11);
+            listPontuacao.add(p12);
 
         }
         return listPontuacao;
     }
-    
-    public static ArrayList<Pontuacao> listaRanking;
-    
-    
-    
-    public static ArrayList<Pontuacao> gerarRanking(ArrayList<Pontuacao> list){
-        
-        Pontuacao temp;
-        
-        if (list.size()>1){
-            for (int x=0; x < list.size(); x++){
-                for (int i=0; i < list.size()-1;i++){
-                   
-                    /*if (list.get(i).compareTo(list.get(i+1)) > 0) {
-                        temp = list.get(i);
-                        list.set(i,list.get(i+1));
-                        list.set(i+1,temp);
-                    }*/
-                }
-            }
-        }
-        /*public static void bubblesrt(ArrayList<Drinks> list)
-  {
-        Drink temp;
-        if (list.size()>1) // check if the number of orders is larger than 1
-        {
-            for (int x=0; x<list.size(); x++) // bubble sort outer loop
-            {
-                for (int i=0; i < list.size()-i; i++) {
-                    if (list.get(i).compareTo(list.get(i+1)) > 0)
-                    {
-                        temp = list.get(i);
-                        list.set(i,list.get(i+1) );
-                        list.set(i+1, temp);
-                    }
-                }
-            }
-        }
 
-  }*/
+    public static ArrayList<Pontuacao> listaRanking; // ArrayList exclusivo para o Ranking
+    /**
+     * Recebe os objetos do listPontuacao, ordena eles de forma decrescente,
+     * depois verifica se o tamanho da listaRanking é maior que 10, sempre
+     * removendo os valures subsequentes.
+     * @return ArrayList listaRanking de objetos do tipo Pontuacao
+     */
+    public static ArrayList<Pontuacao> getListaRanking() {
         
-        return list;
+        listaRanking = new ArrayList<>();   //Instancia o listaRanking
+        listaRanking = getListPontuacao(); /*Copia as referências dos objetos
+        da atual lista de Pontuação "listPontuacao" para o listaRanking
+        */
+        Pontuacao temp; //objeto do tipo Pontuacao auxiliar, para ordenar
+        
+        /*Bubble Sort do java
+        for(i = 0; i<5; i++){
+		for(int j = 0; j<4; j++){
+			if(vet[j] > vet[j + 1]){
+				aux = vet[j];
+				vet[j] = vet[j+1];
+				vet[j+1] = aux;
+			}
+		}
+	}
+         */
+        
+        for (Pontuacao listaRanking1 : listaRanking) { //inicio foreach
+            for (int y = 0; y < listaRanking.size()-1; y++) { 
+                if (listaRanking.get(y).getPontuacaoJogador() < listaRanking.get(y + 1).getPontuacaoJogador()) {
+                    temp = listaRanking.get(y);
+                    listaRanking.set(y, listaRanking.get(y + 1));
+                    listaRanking.set(y + 1, temp);
+                }
+                
+            }
+        }
+        
+        /*Enquanto a lista de ranking tiver mais que 10 elementos, vai remover
+        os últimos elementos do ArrayList
+        */
+        while (listaRanking.size()>10) {
+            listaRanking.remove(listaRanking.size()-1);
+        } 
+        
+         //JOptionPane.showMessageDialog(null, listaRanking.get(0).getPontuacaoJogador());
+         
+         return listaRanking;
+        
     }
+    
+    /*public static void main(String[] args) {
+        getListaRanking();
+    }*/
 
     
+
 }

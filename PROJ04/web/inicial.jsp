@@ -63,24 +63,28 @@ and open the template in the editor.
                     <th>Quiz</th>
                     <th>Data</th>
                 </tr>
+                
+                <%try{%>
+                    <%int j = 1;%>
+                        <% for (Pontuacao r: Pontuacao.getListaRanking()){%>
+                        <tr>
+                            <th><%=j++%></th>
+                            <th><%=r.getNomeJogador()%></th>
+                            <th><%=r.getPontuacaoJogador()%></th>
+                            <th><%=r.getMediaJogador()%></th>
+                            <th><%=r.getQtPerguntas()%></th>
+                            <th><%=r.getQtPerguntas()%></th>
+                            <th><%=r.getHoraQuizFormatado()%></th>
+                
+                        <tr>
+                    <%}%>
+                <%}catch(Exception ex){%>
                 <tr>
-                    <th>#</th>
-                    <th>Jogador</th>
-                    <th>Pontos</th>
-                    <th>Média</th>
-                    <th>Qt.Perguntas</th>
-                    <th>Quiz</th>
-                    <th>Data</th>
-                </tr> 
-                <tr>
-                    <th>#</th>
-                    <th>Jogador</th>
-                    <th>Pontos</th>
-                    <th>Média</th>
-                    <th>Qt.Perguntas</th>
-                    <th>Quiz</th>
-                    <th>Data</th>
+                    <td colspan="5">
+                        Erro ao carregar a lista: <%=ex.getMessage()%>
+                    </td>
                 </tr>
+           <%}%> 
             </table>
         </section>
         <br>
