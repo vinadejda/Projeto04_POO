@@ -13,13 +13,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Quiz - Perguntados</title>
+        <%@include file="WEB-INF/jspf/head.jspf"%>
     </head>
     <body>
-	<h1>webquiz</h1>
-	<h2>Quiz</h2>
-	<h2>Questoes</h2>
+        <nav class="navbar navbar-dark bg-dark">
+            <%@include file="WEB-INF/jspf/header.jspf"%>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="inicial.jsp" class="nav-link" style="color: #fff;">Página Inicial</a><br>   
+                </li>
+                <li class="nav-item">
+                    <a href="logout.jsp" class="nav-link" style="color: #fff;">Sair</a>
+                </li>
+            </ul>
+        </nav>
+        <main class="container">
+        <br>
+        <h2>Questões</h2><br>
         <% int totalPergunta=3;%>
     <!-- Aqui o usuario já está logado com a session-->
         <%
@@ -64,18 +75,20 @@
                         
                         <!-- Contador de perguntas-->
                         
-                         <fieldset>
-			<H1><%=q.getPergunta()%></h1>  
+                        <label style="font-size: 1.2em;"><b>Q<%=q.getId()%> </b>- <%=q.getPergunta()%></label>  <br>
                         <input type="radio" name="<%=q.getId()%>" value="<%=q.getRespostaCerta()%>"/>
 			<%=q.getRespostaCerta()%>
 			<input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada1()%>"/>
 			<%=q.getErrada1()%>
 			<input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada2()%>"/>
-			<%=q.getErrada2()%>
-                        </fieldset>
+                        <%=q.getErrada2()%><br>
+                        <br>
 			<%}%>		
                          
-			<input type="submit" name="finalizar" value="finalizar"/>
+                        <center><input type="submit" name="finalizar" value="Finalizar"/><center>
 		</form>
-</body>
+            <br>
+        </main>
+        <%@include file="WEB-INF/jspf/footer.jspf"%>
+    </body>
 </html>
