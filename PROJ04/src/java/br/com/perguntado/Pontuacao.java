@@ -29,14 +29,14 @@ public class Pontuacao {
     /*Criar arrayList de Pontuação dos jogadores que finalizarem determinado quiz*/
  /*O ranking são vários rankings das pontuações dos usuarios*/
  /*O ranking é instanciado e nos passamos os atributos do jogador e de sua pontuação para ele*/
-    public Pontuacao(String nomeJogador, int pontuacaoJogador, Double mediaJogador, int qtPerguntas, String nomeQuizJogado) {
+    public Pontuacao(String nomeJogador, int pontuacaoJogador, Double mediaJogador, int qtPerguntas, String nomeQuizJogado, Date data) {
         this.nomeJogador = nomeJogador;
         this.pontuacaoJogador = pontuacaoJogador;
         this.mediaJogador = mediaJogador;
         this.qtPerguntas = qtPerguntas;
         this.nomeQuizJogado = nomeQuizJogado;
 
-        this.horaQuiz = new Date();
+        this.horaQuiz = data;
     }
     
     public Pontuacao(){
@@ -98,18 +98,18 @@ public class Pontuacao {
         if (listPontuacao == null) {
             listPontuacao = new ArrayList<>();
 
-            Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz - Perguntados");
-            Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz - Perguntados");
-            Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz - Perguntados");
-            Pontuacao p4 = new Pontuacao("Luiz", 7, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p5 = new Pontuacao("Vitoria", 6, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p6 = new Pontuacao("Luciana", 11, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p7 = new Pontuacao("Luciana", 13, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p8 = new Pontuacao("Luciana", 10, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p9 = new Pontuacao("Luciana", 5, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p10 = new Pontuacao("Luciana", 4, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p11 = new Pontuacao("Luciana", 2, 100.00, 20, "Quiz  - Perguntados");
-            Pontuacao p12 = new Pontuacao("Luciana", 1, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz - Perguntados", new Date(117,10,16,0,0,1));
+            Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz - Perguntados",new Date(117,10,16,0,0,2));
+            Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz - Perguntados",new Date(117,10,16,0,0,3));
+            Pontuacao p4 = new Pontuacao("Luiz", 7, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,4));
+            Pontuacao p5 = new Pontuacao("Vitoria", 6, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,5));
+            Pontuacao p6 = new Pontuacao("Luciana", 11, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,45));
+            Pontuacao p7 = new Pontuacao("Luciana", 13, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,7));
+            Pontuacao p8 = new Pontuacao("Luciana", 10, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,8));
+            Pontuacao p9 = new Pontuacao("Luciana", 5, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,46));
+            Pontuacao p10 = new Pontuacao("Luciana", 4, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,10));
+            Pontuacao p11 = new Pontuacao("Luciana", 2, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,30));
+            Pontuacao p12 = new Pontuacao("Luciana", 1, 100.00, 20, "Quiz  - Perguntados",new Date(117,10,16,0,0,12));
             listPontuacao.add(p1);
             listPontuacao.add(p2);
             listPontuacao.add(p3);
@@ -186,7 +186,25 @@ public class Pontuacao {
         }
         ultimosJogos = getListPontuacao();
         
-        Collections.reverse(ultimosJogos);
+        Pontuacao temp;
+        
+        for (Pontuacao ultimosJogos1 : ultimosJogos) { //inicio foreach
+            for (int y = 0; y < ultimosJogos.size()-1; y++) { 
+                if (ultimosJogos.get(y).getHoraQuiz().compareTo(ultimosJogos.get(y+1).getHoraQuiz())<0) {
+                    temp = ultimosJogos.get(y);
+                    ultimosJogos.set(y, ultimosJogos.get(y + 1));
+                    ultimosJogos.set(y + 1, temp);
+                }
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
+        //Collections.reverse(ultimosJogos);
         
         while (ultimosJogos.size()>10) {
             ultimosJogos.remove(ultimosJogos.size()-1);
