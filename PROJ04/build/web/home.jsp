@@ -1,9 +1,9 @@
 <%-- 
     Document   : home
     Created on : 12/10/2017, 22:16:46
-    Author     : Laércio
-    Desc: O usuario já se encontra logado e esse é o painel onde são exibidas as quantidades de tentativas que
-    ele teve em determinado quiz, sua ultima pontuacao e a pontuação que ele obteve nos ultimos 10 jogos 
+    Author     : LaÃ©rcio
+    Desc: O usuario jÃ¡ se encontra logado e esse Ã© o painel onde sÃ£o exibidas as quantidades de tentativas que
+    ele teve em determinado quiz, sua ultima pontuacao e a pontuaÃ§Ã£o que ele obteve nos ultimos 10 jogos 
 --%>
 
 <%@page import="br.com.perguntado.Pontuacao"%>
@@ -30,26 +30,18 @@
         </nav>
         <main class="container">
             <br>
-            <h1><%="Olá, " + sessao.getAttribute(login)%><br></h1>
+            <h1><%="Olá, " + sessao.getAttribute(login)%>!<br></h1>
             <% String nomeUsu = ""+sessao.getAttribute(login);%>
             <br>
             <h2> Seu Histórico de partidas:</h2>
             <section  class="card-body">
                 Quantidade de tentativas: <%= Quiz.quantidade%><br>
                 Última pontuação: <%= Quiz.acertos%><br>                
-            </section>   
-                <!-- Tabela de pontuações do usuário logado-->
-                <table  class="table table-striped">
-                    <tr>
-                        <th>Nome do Quiz</th>
-                        <th>Pontuação</th><!--Se o luiz quizer, a hora pode ser um atributo a mais <td>Hora</td>-->
-                    </tr>
-                </table>
-                <br>
-            
-                
+            </section>     
             <section>
+                <br>
                 <h2>Últimos testes realizados</h2>
+                <br>
                 <table class="table table-striped">
                     <tr>
                         <th>Pontuação</th>
@@ -58,7 +50,7 @@
                         <th>Quiz</th>
                     </tr>
                 <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
-                    <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuações o usuario que tenha o nome igual ao usuário logado-->
+                    <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuaÃ§Ãµes o usuario que tenha o nome igual ao usuÃ¡rio logado-->
                         <tr>
                             <td><%= p.getPontuacaoJogador()%></td>
                             <td><%= p.getMediaJogador()%></td>

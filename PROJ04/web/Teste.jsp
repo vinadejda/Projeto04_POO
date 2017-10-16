@@ -4,6 +4,8 @@
     Author     : Laércio
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Collections"%>
 <%@page import="br.com.perguntado.Pontuacao"%>
 <%@page import="br.com.perguntado.Quiz"%>
 <%@page import="br.com.perguntado.Usuario"%>
@@ -21,7 +23,7 @@
             <%@include file="WEB-INF/jspf/header.jspf"%>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a href="inicial.jsp" class="nav-link" style="color: #fff;">Página Inicial</a><br>   
+                    <a href="home.jsp" class="nav-link" style="color: #fff;">Home</a><br>   
                 </li>
                 <li class="nav-item">
                     <a href="logout.jsp" class="nav-link" style="color: #fff;">Sair</a>
@@ -54,7 +56,7 @@
                     //Calculo de media porcentagem
                     double media = (pontos/ totalPergunta)/100;
                                
-                    Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz do Rodrigo");//Criamos um objeto do tipo cliente
+                    Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz - Perguntados");//Criamos um objeto do tipo cliente
 
                     
                     Pontuacao.getListPontuacao().add(p);//Aqui nós buscamos o arrayList na memória e enviamos o objeto e seus atributos para o armazenamento
@@ -69,23 +71,26 @@
 		
 	%>
 
-		<form>
-			<% for(Questao q: Quiz.montarQuiz()){%>
-                        
-                        
-                        <!-- Contador de perguntas-->
-                        
-                        <label style="font-size: 1.2em;"><b>Q<%=q.getId()%> </b>- <%=q.getPergunta()%></label>  <br>
-                        <input type="radio" name="<%=q.getId()%>" value="<%=q.getRespostaCerta()%>"/>
-			<%=q.getRespostaCerta()%>
-			<input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada1()%>"/>
-			<%=q.getErrada1()%>
-			<input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada2()%>"/>
-                        <%=q.getErrada2()%><br>
-                        <br>
-			<%}%>		
+		<form style="text-align: justify;">
+		<%  int i=0;//inicio um contador que irá ser excutado dez vezes
+                    for(Questao q: Quiz.montarQuiz()){  
+                        if(i<10){%>                                        
+                            <label style="font-size: 1.2em;"><b>Q<%=(i+1)%> - <%=q.getSigla()%> </b> <%=q.getPergunta()%></label><br>
+                            
+                            <input type="radio" name="<%=q.getId()%>" value="<%=q.getRespostaCerta()%>"/>
+                            <%=q.getRespostaCerta()%><br>
+                            
+                            <input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada1()%>"/>
+                            <%=q.getErrada1()%><br>
+                            
+                            <input type="radio" name="<%=q.getId()%>" value="<%=q.getErrada2()%>"/>
+                            <%=q.getErrada2()%><br><br>
+                            
+                            <%i++;
+                        }
+                    }%>		
                          
-                        <center><input type="submit" name="finalizar" value="Finalizar"/><center>
+                    <center><input type="submit" name="finalizar" value="Finalizar"  class="btn btn-dark"/><center>
 		</form>
             <br>
         </main>

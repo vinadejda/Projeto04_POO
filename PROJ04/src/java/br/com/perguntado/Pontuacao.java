@@ -98,18 +98,18 @@ public class Pontuacao {
         if (listPontuacao == null) {
             listPontuacao = new ArrayList<>();
 
-            Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p4 = new Pontuacao("Luiz", 7, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p5 = new Pontuacao("Vitoria", 6, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p6 = new Pontuacao("Luciana", 11, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p7 = new Pontuacao("Luciana", 13, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p8 = new Pontuacao("Luciana", 10, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p9 = new Pontuacao("Luciana", 5, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p10 = new Pontuacao("Luciana", 4, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p11 = new Pontuacao("Luciana", 2, 100.00, 20, "Quiz do Rodrigo");
-            Pontuacao p12 = new Pontuacao("Luciana", 1, 100.00, 20, "Quiz do Rodrigo");
+            Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz - Perguntados");
+            Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz - Perguntados");
+            Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz - Perguntados");
+            Pontuacao p4 = new Pontuacao("Luiz", 7, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p5 = new Pontuacao("Vitoria", 6, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p6 = new Pontuacao("Luciana", 11, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p7 = new Pontuacao("Luciana", 13, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p8 = new Pontuacao("Luciana", 10, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p9 = new Pontuacao("Luciana", 5, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p10 = new Pontuacao("Luciana", 4, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p11 = new Pontuacao("Luciana", 2, 100.00, 20, "Quiz  - Perguntados");
+            Pontuacao p12 = new Pontuacao("Luciana", 1, 100.00, 20, "Quiz  - Perguntados");
             listPontuacao.add(p1);
             listPontuacao.add(p2);
             listPontuacao.add(p3);

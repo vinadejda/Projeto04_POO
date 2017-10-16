@@ -68,13 +68,13 @@ and open the template in the editor.
                     <%int j = 1;%>
                         <% for (Pontuacao r: Pontuacao.getListaRanking()){%>
                         <tr>
-                            <th><%=j++%></th>
-                            <th><%=r.getNomeJogador()%></th>
-                            <th><%=r.getPontuacaoJogador()%></th>
-                            <th><%=r.getMediaJogador()%></th>
-                            <th><%=r.getQtPerguntas()%></th>
-                            <th><%=r.getQtPerguntas()%></th>
-                            <th><%=r.getHoraQuizFormatado()%></th>
+                            <td><%=j++%></td>
+                            <td><%=r.getNomeJogador()%></td>
+                            <td><%=r.getPontuacaoJogador()%></td>
+                            <td><%=r.getMediaJogador()%></td>
+                            <td><%=r.getQtPerguntas()%></td>
+                            <td><%=r.getNomeQuizJogado()%></td>
+                            <td><%=r.getHoraQuizFormatado()%></td>
                 
                         <tr>
                     <%}%>

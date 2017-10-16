@@ -7,27 +7,36 @@ public class Questao {
     private String nomeQuiz;
     /*O id é só a identificação da questão*/
     private String id;
+    private String sigla;
     private String pergunta;
     private String respostaCerta;
     private String errada1;
     private String errada2;
     
     /*Toda questão possui um enunciado,uma alternativa certa e duas erradas*/
-    public Questao(String nomeQuiz, String id,String pergunta,String respostaCerta, String errada1, String errada2){
+    public Questao(String nomeQuiz, String id, String sigla, String pergunta,String respostaCerta, String errada1, String errada2){
         this.nomeQuiz = nomeQuiz;
         this.id = id;
+        this.sigla = sigla;
         this.pergunta = pergunta;
         this.respostaCerta = respostaCerta;
         this.errada1 = errada1;
         this.errada2 = errada2;
     }
     
-        public String getId() {
+    public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
     public String getPergunta() {
         return pergunta;

@@ -1,3 +1,3 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<footer class="py-2 bg-dark" style="margin-bottom: 0%;"><p class="m-0 text-center text-white">&copy; 2017 - Projeto 04 - POO. By Luciana Oliveira, Luiz Henrique, Rodrigo Topan e Vitória Nadejda</p></footer>
+<footer class="py-2 bg-dark" style="margin-top: 9%; "><p class="m-0 text-center text-white">&copy; 2017 - Projeto 04 - POO. By Luciana Oliveira, Luiz Henrique, Rodrigo Topan e Vitória Nadejda</p></footer>
