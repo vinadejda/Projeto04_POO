@@ -48,6 +48,7 @@
                         <th>Média</th>
                         <th>Qt.Perguntas</th>
                         <th>Quiz</th>
+                        <th>Data</th>
                     </tr>
                 <% for (Pontuacao p: Pontuacao.getListPontuacao()){%><!--foreach-->
                     <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuaÃ§Ãµes o usuario que tenha o nome igual ao usuÃ¡rio logado-->
@@ -56,6 +57,7 @@
                             <td><%= p.getMediaJogador()%></td>
                             <td><%= p.getQtPerguntas()%></td>
                             <td><%= p.getNomeQuizJogado()%></td>
+                            <td><%= p.getHoraQuizFormatado()%></td>
                         </tr>
                     <%}
                 }%>

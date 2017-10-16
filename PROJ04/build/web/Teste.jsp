@@ -4,6 +4,7 @@
     Author     : Laércio
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collections"%>
 <%@page import="br.com.perguntado.Pontuacao"%>
@@ -55,8 +56,10 @@
                     
                     //Calculo de media porcentagem
                     double media = (pontos/ totalPergunta)/100;
+                    
+                    
                                
-                    Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz - Perguntados");//Criamos um objeto do tipo cliente
+                    Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz - Perguntados", new Date());//Criamos um objeto do tipo cliente
 
                     
                     Pontuacao.getListPontuacao().add(p);//Aqui nós buscamos o arrayList na memória e enviamos o objeto e seus atributos para o armazenamento

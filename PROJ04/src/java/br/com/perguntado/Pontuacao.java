@@ -97,7 +97,7 @@ public class Pontuacao {
     public static ArrayList<Pontuacao> getListPontuacao() {
         if (listPontuacao == null) {
             listPontuacao = new ArrayList<>();
-
+            /*
             Pontuacao p1 = new Pontuacao("Rodrigo", 3, 100.00, 20, "Quiz - Perguntados", new Date(117,10,16,0,0,1));
             Pontuacao p2 = new Pontuacao("Luiz", 9, 100.00, 20, "Quiz - Perguntados",new Date(117,10,16,0,0,2));
             Pontuacao p3 = new Pontuacao("Rodrigo", 8, 100.00, 20, "Quiz - Perguntados",new Date(117,10,16,0,0,3));
@@ -122,7 +122,7 @@ public class Pontuacao {
             listPontuacao.add(p10);
             listPontuacao.add(p11);
             listPontuacao.add(p12);
-
+            */
         }
         return listPontuacao;
     }
