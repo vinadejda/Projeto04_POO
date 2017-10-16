@@ -76,7 +76,7 @@ and open the template in the editor.
                             <td><%=r.getNomeQuizJogado()%></td>
                             <td><%=r.getHoraQuizFormatado()%></td>
                 
-                        <tr>
+                        </tr>
                     <%}%>
                 <%}catch(Exception ex){%>
                 <tr>
