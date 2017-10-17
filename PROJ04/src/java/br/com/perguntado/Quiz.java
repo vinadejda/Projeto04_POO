@@ -86,9 +86,9 @@ public class Quiz {
     quiz.add(q20);
 
     /*RETORNANDO ARRAYLIST DE QUIZ*/
-    for(int i=0; i<10; i++){
+    
         Collections.shuffle(quiz);//Sorteia uma questao
-    }
+    
     return quiz;
    
     }

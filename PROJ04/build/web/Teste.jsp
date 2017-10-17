@@ -4,6 +4,7 @@
     Author     : Laércio
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collections"%>
@@ -34,18 +35,18 @@
         <main class="container">
         <br>
         <h2>Questões</h2><br>
-        <% int totalPergunta=3;%>
+        <% double totalPergunta=10.0;%>
     <!-- Aqui o usuario já está logado com a session-->
         <%
 		if(request.getParameter("finalizar")!=null){
-			int pontos=0;
+			double pontos=0.0;
 			for(Questao q: Quiz.montarQuiz()){
 			String resposta = request.getParameter(q.getId());
 			if(resposta !=null){
-				if(resposta.equals(q.getRespostaCerta())){
-                                   Quiz.acertos++;
-                                   pontos++;
-				}	
+                            if(resposta.equals(q.getRespostaCerta())){
+                                Quiz.acertos++;
+                                pontos++;
+                            }
 			}
 		    }
                      
@@ -55,10 +56,10 @@
                        
                     
                     //Calculo de media porcentagem
-                    double media = (pontos/ totalPergunta)/100;
                     
+                    double media = (pontos/ totalPergunta)*100;
                     
-                               
+                             
                     Pontuacao p = new Pontuacao(nome, pontos, media, totalPergunta, "Quiz - Perguntados", new Date());//Criamos um objeto do tipo cliente
 
                     

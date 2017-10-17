@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
 public class Pontuacao {
 
     private String nomeJogador;
-    private int pontuacaoJogador;
+    private Double pontuacaoJogador;
     private Double mediaJogador;
-    private int qtPerguntas;
+    private Double qtPerguntas;
     private String nomeQuizJogado;
     private Date horaQuiz;
     DateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -29,7 +29,7 @@ public class Pontuacao {
     /*Criar arrayList de Pontuação dos jogadores que finalizarem determinado quiz*/
  /*O ranking são vários rankings das pontuações dos usuarios*/
  /*O ranking é instanciado e nos passamos os atributos do jogador e de sua pontuação para ele*/
-    public Pontuacao(String nomeJogador, int pontuacaoJogador, Double mediaJogador, int qtPerguntas, String nomeQuizJogado, Date data) {
+    public Pontuacao(String nomeJogador, Double pontuacaoJogador, Double mediaJogador, Double qtPerguntas, String nomeQuizJogado, Date data) {
         this.nomeJogador = nomeJogador;
         this.pontuacaoJogador = pontuacaoJogador;
         this.mediaJogador = mediaJogador;
@@ -51,11 +51,11 @@ public class Pontuacao {
         this.nomeJogador = nomeJogador;
     }
 
-    public int getPontuacaoJogador() {
+    public Double getPontuacaoJogador() {
         return pontuacaoJogador;
     }
 
-    public void setPontuacaoJogador(int pontuacaoJogador) {
+    public void setPontuacaoJogador(Double pontuacaoJogador) {
         this.pontuacaoJogador = pontuacaoJogador;
     }
 
@@ -75,11 +75,11 @@ public class Pontuacao {
         this.nomeQuizJogado = nomeQuizJogado;
     }
 
-    public int getQtPerguntas() {
+    public Double getQtPerguntas() {
         return qtPerguntas;
     }
 
-    public void setQtPerguntas(int qtPerguntas) {
+    public void setQtPerguntas(Double qtPerguntas) {
         this.qtPerguntas = qtPerguntas;
     }
 

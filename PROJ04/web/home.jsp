@@ -6,6 +6,7 @@
     ele teve em determinado quiz, sua ultima pontuacao e a pontuaÃ§Ã£o que ele obteve nos ultimos 10 jogos 
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="br.com.perguntado.Pontuacao"%>
 <%@page import="br.com.perguntado.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,8 +36,14 @@
             <br>
             <h2> Seu Histórico de partidas:</h2>
             <section  class="card-body">
-                Quantidade de tentativas: <%= Quiz.quantidade%><br>
-                Última pontuação: <%= Quiz.acertos%><br>                
+                <% if(Quiz.quantidade == 0){%>
+                    Sua média: 0.0<br>
+                    Quantidade de tentativas: 0.0<br>
+                <% }else{%>
+                    Sua média: <%= (Quiz.acertos/Quiz.quantidade)%>% de acertos<br>                     
+                    Quantidade de tentativas: <%= Quiz.quantidade%><br>
+                <%}%>
+                               
             </section>     
             <section>
                 <br>
@@ -46,7 +53,6 @@
                     <tr>
                         <th>Pontuação</th>
                         <th>Média</th>
-                        <th>Qt.Perguntas</th>
                         <th>Quiz</th>
                         <th>Data</th>
                     </tr>
@@ -54,8 +60,7 @@
                     <%if(nomeUsu.equals(p.getNomeJogador())){%><!--Procurar na lista de pontuaÃ§Ãµes o usuario que tenha o nome igual ao usuÃ¡rio logado-->
                         <tr>
                             <td><%= p.getPontuacaoJogador()%></td>
-                            <td><%= p.getMediaJogador()%></td>
-                            <td><%= p.getQtPerguntas()%></td>
+                            <td><%=p.getMediaJogador()%>%</td>
                             <td><%= p.getNomeQuizJogado()%></td>
                             <td><%= p.getHoraQuizFormatado()%></td>
                         </tr>

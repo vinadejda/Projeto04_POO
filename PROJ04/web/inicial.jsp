@@ -52,6 +52,10 @@ and open the template in the editor.
         <br>
         <section>
         <!--Aqui vai a tabela de ranking e dos ultimos dez jogos-->
+        <h2> Bem -Vindo(a) ao Quiz Perguntados!</h2><br> 
+        <h3 style = "text-align: justify; font-size: 1.3em;">Aqui você poderá responder questões de concurso especialmente selecionadas para você  de TI 
+            que quer estudar para concursos ou apenas se divertir testando seus conhecimentos</h3>
+        <br>
             <h2>Ranking</h2>
             <table class="table table-striped">
                 <tr>
@@ -87,7 +91,7 @@ and open the template in the editor.
            <%}%> 
             </table>
         </section>
-        <br>
+            <br><br>
         <section>
            <table class="table table-striped">
             <tr>
