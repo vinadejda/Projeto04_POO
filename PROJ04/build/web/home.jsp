@@ -40,9 +40,19 @@
                     Sua média: 0.0<br>
                     Quantidade de tentativas: 0.0<br>
                 <% }else{%>
-                    Sua média: <%= (Quiz.acertos/Quiz.quantidade)%>% de acertos<br>                     
-                    Quantidade de tentativas: <%= Quiz.quantidade%><br>
-                <%}%>
+                 <% double acertos=0; double media=0; int totpergunta=0; int tentativa=0;%>
+                 <% for (Pontuacao q: Pontuacao.getListPontuacao()){%><!--foreach-->
+                    <%if(nomeUsu.equals(q.getNomeJogador())){%><!--Procurar na lista de pontuaÃ§Ãµes o usuario que tenha o nome igual ao usuÃ¡rio logado-->
+                        <%acertos = q.getPontuacaoJogador();%><!-- Acumular as pontuações obtidas pelo usuario-->
+                        <% totpergunta = totpergunta + 10;%><!-- toda vez que o usuário responder um quiz aumenta 10 perguntas para o tot/al--> 
+                        <% tentativa++; %><!-- Contador de quizzes que o usuário responde-->
+                        <%}%><!--Fim do if-->
+                 <%}%><!-- Fim do for-->
+                    <% media = (acertos/totpergunta)* 100;%><!--Media= a todos os acertos de todos os quizzes dividido por todos as perguntas de todos os quizzes-->
+                    Sua média de acertos: <%= media %>%<br>                     
+                    <!--Quantidade de tentativas: Quiz.quantidade%><br>-->
+                    Quantidade de tentativas: <%= tentativa %><br><!-- Quantidade de tentativas do usuário-->
+                <%}%><!--Fim do else-->
                                
             </section>     
             <section>
