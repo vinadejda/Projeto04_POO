@@ -47,7 +47,7 @@
             </section>     
             <section>
                 <br>
-                <h2>Últimos testes realizados</h2>
+                <h2>Últimos testes realizados:</h2>
                 <br>
                 <table class="table table-striped">
                     <tr>

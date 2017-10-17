@@ -172,10 +172,12 @@ public class Pontuacao {
         while (listaRanking.size()>10) {
             listaRanking.remove(listaRanking.size()-1);
         } 
+        temp = null;
         
          //JOptionPane.showMessageDialog(null, listaRanking.get(0).getPontuacaoJogador());
          
          return listaRanking;
+         
         
     }
     public static ArrayList<Pontuacao> ultimosJogos; // ArrayList exclusivo para ultimos jogos
@@ -212,6 +214,8 @@ public class Pontuacao {
         /*for (int i = 0; i < ultimosJogos.size();i++){
             JOptionPane.showMessageDialog(null, ultimosJogos.get(i).getPontuacaoJogador());
         }*/
+        
+        temp = null;
         return ultimosJogos;
     }
     /*public static void main(String[] args) {
