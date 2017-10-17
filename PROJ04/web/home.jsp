@@ -43,7 +43,7 @@
                  <% double acertos=0; double media=0; int totpergunta=0; int tentativa=0;%>
                  <% for (Pontuacao q: Pontuacao.getListPontuacao()){%><!--foreach-->
                     <%if(nomeUsu.equals(q.getNomeJogador())){%><!--Procurar na lista de pontuaÃ§Ãµes o usuario que tenha o nome igual ao usuÃ¡rio logado-->
-                        <%acertos = q.getPontuacaoJogador();%><!-- Acumular as pontuações obtidas pelo usuario-->
+                        <%acertos = acertos + q.getPontuacaoJogador();%><!-- Acumular as pontuações obtidas pelo usuario-->
                         <% totpergunta = totpergunta + 10;%><!-- toda vez que o usuário responder um quiz aumenta 10 perguntas para o tot/al--> 
                         <% tentativa++; %><!-- Contador de quizzes que o usuário responde-->
                         <%}%><!--Fim do if-->
